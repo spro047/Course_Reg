@@ -25,7 +25,7 @@ A modern, user-friendly web application for student course registration built wi
 - MongoDB (local installation or MongoDB Atlas account)
 - npm or yarn
 
-## Installation
+## Installation and How to Run
 
 1. Clone the repository or download the files
 
@@ -37,7 +37,7 @@ npm install
 3. Set up environment variables:
    - Create a `.env` file in the root directory
    - Add the following content:
-   ```
+   ```env
    MONGODB_URI=mongodb://localhost:27017/course_registration
    SESSION_SECRET=your-super-secret-session-key-change-this-in-production-12345
    PORT=3000
@@ -119,7 +119,7 @@ http://localhost:3000
 
 ## Project Structure
 
-```
+```text
 Course_Reg/
 ├── models/
 │   ├── User.js          # User model
@@ -168,7 +168,15 @@ Course_Reg/
 - Secure password requirements
 - Email validation
 
+## Challenges Faced
+
+During the development of this project, several technical challenges were addressed to ensure a robust and smooth user experience:
+
+1. **Session Management and Authentication**: Implementing a secure login system using `express-session` and `bcryptjs` required careful handling of user states across different pages to ensure unauthorized users could not access the course registration portal.
+2. **Dynamic Credit Calculation**: Designing the logic to calculate a student's total registered credits and checking it against semester-specific credit limits (e.g., 20 credits for Semester 1, 24 for Semester 5) before allowing new course registrations. Handle this efficiently on the backend to prevent abuse.
+3. **Database Relationships**: Managing the many-to-many relationship between users (students) and courses using MongoDB (Mongoose) references, and efficiently populating the data when rendering the EJS views.
+4. **Error Handling & User Feedback**: Providing clear and immediate feedback to the user on the UI (e.g., when a credit limit is exceeded or email is already in use) without crashing the server.
+
 ## License
 
 ISC
-
